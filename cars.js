@@ -1,7 +1,7 @@
 'use strict'
 
-class Cars {
-  constructor(canvas){
+class Car {
+  constructor(canvas, x){
     this.canvas = canvas;
     this.context = this.canvas.getContext('2d');
     this.size = 10;

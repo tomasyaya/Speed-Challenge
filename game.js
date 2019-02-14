@@ -3,19 +3,28 @@
 class Game {
   constructor(canvas){
     this.canvas = canvas;
-    this.ctx = this.canvas.getContext('2d');
+    this.context = this.canvas.getContext('2d');
     this.player;
     this.cars = [];
     this.isGameOver = false;
 
   }
 
-   StartLoop(){
+   startLoop(){
 
-    this.player = new Player(canvas);
+    this.player = new Player(this.canvas);
 
     const loop = ()=> {
 
+      if(Math.random() > 0.97) {
+        const x = Math.random() * ((this.canvas.width / 2 + 150) - (this.canvas.width / 2 - 150));
+        this.cars.push(new Car(this.canvas, x))
+      };
+
+      this.checkCollision();
+      this.updateCanvas();
+      this.clearCanvas();
+      this.drawCanvas();
 
       window.requestAnimationFrame(loop);
     };
@@ -26,15 +35,21 @@ class Game {
 
   updateCanvas() {
     this.player.update();
+    this.cars.forEach(car => {car.update()});
   };
 
   drawCanvas() {
     this.player.draw();
+    this.cars.forEach(car => {car.draw()});
   };
 
   clearCanvas() {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
   };
+
+  checkCollision(){
+    this.player.checkScreen();
+  }
 
   gameOver(){
 

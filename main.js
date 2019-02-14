@@ -35,6 +35,21 @@ const main = () => {
     canvasElement.setAttribute('width', width);
     canvasElement.setAttribute('height', height);
 
+    const game = new Game(canvasElement);
+    game.startLoop()
+
+    const setPlayerDirection = (event)=> {
+      if(event.code === 'ArrowLeft') {
+        game.player.setDirection(-1)
+      } else if(event.code === 'ArrowRight') {
+        game.player.setDirection(1);
+      }
+    };
+    document.addEventListener('keydown', setPlayerDirection)
+
+    // document.addEventListener('keydown', function(val){
+    //   console.log(val)
+    // })
   };
 
 
@@ -48,14 +63,6 @@ const main = () => {
 
     const restartButton = document.querySelector('.restart-button');
     restartButton.addEventListener('click', buildGameScreen);
-
-    const setPlayerDirection = (event)=> {
-      if(event.code === 'ArrowLeft') {
-        this.player.setDirecion(-1)
-      } else if(event.code === 'ArrowRight') {
-        this.player.setDirecion(1);
-      }
-    };
 
   };
 
