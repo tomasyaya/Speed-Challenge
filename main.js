@@ -49,6 +49,14 @@ const main = () => {
     const restartButton = document.querySelector('.restart-button');
     restartButton.addEventListener('click', buildGameScreen);
 
+    const setPlayerDirection = (event)=> {
+      if(event.code === 'ArrowLeft') {
+        this.player.setDirecion(-1)
+      } else if(event.code === 'ArrowRight') {
+        this.player.setDirecion(1);
+      }
+    };
+
   };
 
 
