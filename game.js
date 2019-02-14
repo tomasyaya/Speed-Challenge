@@ -28,7 +28,8 @@ class Game {
       this.clearCanvas();
       this.drawCanvas();
 
-      window.requestAnimationFrame(loop);
+      if(!this.isGameOver)
+      {window.requestAnimationFrame(loop);}
     };
 
     window.requestAnimationFrame(loop);
@@ -53,13 +54,14 @@ class Game {
     this.player.checkScreen();
     this.cars.forEach((car) => {
       if(this.player.checkCollision(car)){
-        console.log('working collision')
+        this.isGameOver = true;
+        this.onGameOver()
       }
     })
   }
 
-  gameOver(){
-
+  gameOverCallback(callback){
+    this.onGameOver = callback
   };
 
 }

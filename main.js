@@ -36,7 +36,9 @@ const main = () => {
     canvasElement.setAttribute('height', height);
 
     const game = new Game(canvasElement);
-    game.startLoop()
+    game.gameOverCallback(buildGameOverScreen)
+    game.startLoop();
+
 
     const setPlayerDirection = (event)=> {
       if(event.code === 'ArrowLeft') {
