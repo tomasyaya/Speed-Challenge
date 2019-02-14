@@ -34,8 +34,15 @@ class Player {
     }
   };
 
-  checkCollision(){
+  checkCollision(car){
+    const collideRight = this.x + this.size / 2 > car.x - car.size / 2;
+    const collideLeft = this.x - this.size / 2 < car.x + car.size / 2;
+    const collideTop = this.y - this.size / 2 < car.y + car.size / 2;
+    const collideBottom = this.y + this.size / 2 > car.y - car.size / 2;
 
+    if(collideRight && collideLeft && collideBottom && collideTop) {
+      console.log('IT COLLIDE!!!!!')
+    }
   };
 
 

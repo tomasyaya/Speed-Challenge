@@ -51,6 +51,11 @@ class Game {
 
   checkCollision(){
     this.player.checkScreen();
+    this.cars.forEach((car) => {
+      if(this.player.checkCollision(car)){
+        console.log('working collision')
+      }
+    })
   }
 
   gameOver(){
