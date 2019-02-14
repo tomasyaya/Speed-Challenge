@@ -12,7 +12,10 @@ class Game {
 
    StartLoop(){
 
+    this.player = new Player(canvas);
+
     const loop = ()=> {
+
 
       window.requestAnimationFrame(loop);
     };
@@ -22,15 +25,15 @@ class Game {
 
 
   updateCanvas() {
-
+    this.player.update();
   };
 
   drawCanvas() {
-
+    this.player.draw();
   };
 
   clearCanvas() {
-
+    this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
   };
 
   gameOver(){
