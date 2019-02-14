@@ -16,9 +16,11 @@ class Game {
 
     const loop = ()=> {
 
-      if(Math.random() > 0.97) {
-        const x = Math.random() * ((this.canvas.width / 2 + 150) - (this.canvas.width / 2 - 150));
-        this.cars.push(new Car(this.canvas, x))
+      if(Math.random() > 0.95) {
+        const x = Math.random() * (this.canvas.width + 150);
+        if(x > this.canvas.width / 2 - 150 && x < this.canvas.width / 2 + 150)
+        {this.cars.push(new Car(this.canvas, x))}
+        
       };
 
       this.checkCollision();

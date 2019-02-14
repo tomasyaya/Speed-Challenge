@@ -8,7 +8,7 @@ class Car {
     this.direction = 1;
     this.speed = 5;
     this.x = x;
-    this.y = this.canvas.height;
+    this.y = 10;
   }
 
   update(){
