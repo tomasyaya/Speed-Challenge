@@ -9,6 +9,18 @@ class Car {
     this.speed = 2;
     this.x = x;
     this.y = 0;
+    this.policeCar = new Image();
+    this.policeCar.src = 'Images/car4.png';
+    this.taxiCar = new Image();
+    this.taxiCar.src = 'Images/car1.png';
+    this.blueCar = new Image();
+    this.blueCar.src = 'Images/car2.png';
+    this.grayCar = new Image();
+    this.grayCar.src = 'Images/car3.png';
+    this.whiteCar = new Image();
+    this.whiteCar.src = 'Images/car6.png'
+    this.cars = [this.policeCar, this.taxiCar, this.blueCar, this.grayCar, this.whiteCar];
+    this.img = this.images(this.cars)
   }
 
   update(){
@@ -17,8 +29,12 @@ class Car {
 
   draw(){
     this.context.fillStyle = "black";
-    this.context.fillRect(this.x, this.y, this.size + 20, this.size);
+    this.context.drawImage(this.img, this.x, this.y, this.size, this.size);
+    // this.context.fillRect(this.x, this.y, this.size, this.size);
   };
 
+  images(img){
+    return img[Math.floor(Math.random()* (img.length - 1))]
+  }
   
 }
