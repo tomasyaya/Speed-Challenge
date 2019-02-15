@@ -24,6 +24,7 @@ const main = () => {
   const buildGameScreen = () =>{
     const gameScreen = buildDom(`
       <section class="game-screen">
+      <h2 class="score-title"></h2>
       <canvas class="main-canvas"></canvas>
       </screen>
     `);
@@ -32,23 +33,44 @@ const main = () => {
     const height = document.querySelector('.game-screen').offsetHeight;
 
     const canvasElement = document.querySelector('canvas');
-    // canvasElement.setAttribute('width', width);
-    // canvasElement.setAttribute('height', height);
+    canvasElement.setAttribute('width', width);
+    canvasElement.setAttribute('height', height);
+
+
+    const scoreSum = () => {
+      let scoreTitle = document.querySelector('.score-title');
+      scoreTitle.innerText = `Your score is ${game.score}`
+    }
+
+    
+
 
     const game = new Game(canvasElement);
     game.gameOverCallback(buildGameOverScreen)
+    game.changeScore(scoreSum)
     game.startLoop();
-
+    
+    
 
     const setPlayerDirection = (event)=> {
       if(event.code === 'ArrowLeft') {
         game.player.setDirection(-1)
+        game.player.move = true;
       } else if(event.code === 'ArrowRight') {
         game.player.setDirection(1);
+        game.player.move = true;
       }
     };
-    document.addEventListener('keydown', setPlayerDirection)
 
+    const allowMovement = (event) => {
+      if(event.code === 'ArrowLeft'){
+        game.player.move = false;
+      } else if(event.code === 'ArrowRight'){
+        game.player.move = false;
+      }
+    }
+    document.addEventListener('keydown', setPlayerDirection)
+    document.addEventListener('keyup', allowMovement)
     
   };
 

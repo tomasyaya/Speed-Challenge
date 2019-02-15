@@ -25,6 +25,8 @@ class Game {
         
       };
 
+
+      this.actualizarScore()
       this.scoreCount();
       this.checkCollision();
       this.updateCanvas();
@@ -66,6 +68,10 @@ class Game {
   gameOverCallback(callback){
     this.onGameOver = callback
   };
+
+  changeScore(callback){
+    this.actualizarScore = callback
+  }
 
   scoreCount(){
     this.score = this.score + 10

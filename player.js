@@ -4,26 +4,31 @@ class Player {
   constructor(canvas){
   this.canvas = canvas;
   this.context = this.canvas.getContext('2d');
-  this.size = 20;
+  this.size = 35;
+  this.sizeY = 25
   this.x = this.canvas.width / 2;
-  this.y = this.canvas.height - this.size / 2;
+  this.y = this.canvas.height - 80;
   this.direction = 0;
-  this.speed = 5;
+  this.speed = 2;
   this.live = 1;
+  this.move = false;
   this.character = new Image;
   this.character.src = 'Images/car5.png';
   
 }
 
   update() {
+    if(this.move === true){
     this.x = this.x + this.direction * this.speed;
-    
+    }
   };
+
+  
 
   draw() {
     this.context.fillStyle = "red";
-    this.context.drawImage(this.character, this.x, this.y, this.size, this.size);
-    this.context.fillRect(this.x - this.size / 2, this.y, this.size, this.size);
+    this.context.drawImage(this.character, this.x, this.y, this.size, this.size + this.sizeY);
+    
   };
 
   setDirection(direction) {
@@ -31,7 +36,7 @@ class Player {
   }
 
   checkScreen() {
-    if(this.x > 298) {
+    if(this.x > 320) {
       this.direction = -1;
     } else if(this.x < 2) {
       this.direction = 1;
@@ -39,10 +44,10 @@ class Player {
   };
 
   checkCollision(car){
-    const collideRight = this.x + this.size / 2 > car.x - car.size / 2;
-    const collideLeft = this.x - this.size / 2 < car.x + car.size / 2;
-    const collideTop = this.y - this.size / 2 < car.y + car.size / 2;
-    const collideBottom = this.y + this.size / 2 > car.y - car.size / 2;
+    const collideRight = this.x + this.size + 5 > car.x;
+    const collideLeft = this.x  < car.x + car.size + 5;
+    const collideTop = this.y  < car.y + car.sizeY + car.size + 5;
+    const collideBottom = this.y + this.size +  this.sizeY > car.y + car.sizeY;
 
     if(collideRight && collideLeft && collideBottom && collideTop) {
       return true

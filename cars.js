@@ -4,9 +4,10 @@ class Car {
   constructor(canvas, x){
     this.canvas = canvas;
     this.context = this.canvas.getContext('2d');
-    this.size = 15;
+    this.size = 35;
+    this.sizeY = 25;
     this.direction = 1;
-    this.speed = 2;
+    this.speed = 5;
     this.x = x;
     this.y = 0;
     this.policeCar = new Image();
@@ -29,8 +30,8 @@ class Car {
 
   draw(){
     this.context.fillStyle = "black";
-    this.context.drawImage(this.img, this.x, this.y, this.size, this.size);
-    // this.context.fillRect(this.x, this.y, this.size, this.size);
+    this.context.drawImage(this.img, this.x, this.y, this.size, this.size + this.sizeY);
+    
   };
 
   images(img){
