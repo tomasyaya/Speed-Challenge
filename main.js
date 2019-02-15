@@ -24,7 +24,7 @@ const main = () => {
   const buildGameScreen = () =>{
     const gameScreen = buildDom(`
       <section class="game-screen">
-      <canvas></canvas>
+      <canvas class="main-canvas"></canvas>
       </screen>
     `);
 
@@ -32,8 +32,8 @@ const main = () => {
     const height = document.querySelector('.game-screen').offsetHeight;
 
     const canvasElement = document.querySelector('canvas');
-    canvasElement.setAttribute('width', width);
-    canvasElement.setAttribute('height', height);
+    // canvasElement.setAttribute('width', width);
+    // canvasElement.setAttribute('height', height);
 
     const game = new Game(canvasElement);
     game.gameOverCallback(buildGameOverScreen)
@@ -49,9 +49,7 @@ const main = () => {
     };
     document.addEventListener('keydown', setPlayerDirection)
 
-    // document.addEventListener('keydown', function(val){
-    //   console.log(val)
-    // })
+    
   };
 
 

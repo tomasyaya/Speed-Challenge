@@ -7,22 +7,25 @@ class Game {
     this.player;
     this.cars = [];
     this.isGameOver = false;
-
+    this.score = 0;
   }
+  
 
    startLoop(){
 
     this.player = new Player(this.canvas);
-
+    
+    
     const loop = ()=> {
 
-      if(Math.random() > 0.95) {
-        const x = Math.random() * (this.canvas.width + 150);
-        if(x > this.canvas.width / 2 - 150 && x < this.canvas.width / 2 + 150)
+      if(Math.random() > 0.98) {
+        const x = Math.random() * this.canvas.width;
+        if((x > 15  && x < 130) || (x > 160 && x < 290) ) 
         {this.cars.push(new Car(this.canvas, x))}
         
       };
 
+      this.scoreCount();
       this.checkCollision();
       this.updateCanvas();
       this.clearCanvas();
@@ -63,5 +66,10 @@ class Game {
   gameOverCallback(callback){
     this.onGameOver = callback
   };
+
+  scoreCount(){
+    this.score = this.score + 10
+    console.log(this.score)
+  }
 
 }

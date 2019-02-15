@@ -4,11 +4,11 @@ class Car {
   constructor(canvas, x){
     this.canvas = canvas;
     this.context = this.canvas.getContext('2d');
-    this.size = 10;
+    this.size = 15;
     this.direction = 1;
-    this.speed = 5;
+    this.speed = 2;
     this.x = x;
-    this.y = 10;
+    this.y = 0;
   }
 
   update(){
@@ -17,7 +17,7 @@ class Car {
 
   draw(){
     this.context.fillStyle = "black";
-    this.context.fillRect(this.x, this.y + this.size / 2, this.size, this.size);
+    this.context.fillRect(this.x, this.y, this.size + 20, this.size);
   };
 
   
