@@ -14,6 +14,7 @@ class Player {
   this.move = false;
   this.character = new Image;
   this.character.src = 'Images/car5.png';
+  this.collision = false;
   
 }
 
@@ -38,8 +39,10 @@ class Player {
   checkScreen() {
     if(this.x > 320) {
       this.direction = -1;
+      this.collision = true;
     } else if(this.x < 2) {
       this.direction = 1;
+      this.collision = true;
     }
   };
 

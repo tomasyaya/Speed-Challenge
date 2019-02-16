@@ -1,13 +1,14 @@
 'use strict'
 
 class Game {
-  constructor(canvas){
+  constructor(canvas, state){
     this.canvas = canvas;
     this.context = this.canvas.getContext('2d');
     this.player;
     this.cars = [];
     this.isGameOver = false;
     this.score = 0;
+    this.state = state;
   }
   
 
@@ -56,7 +57,12 @@ class Game {
   };
 
   checkCollision(){
-    this.player.checkScreen();
+    if (this.state === 'easy') {
+      this.player.checkScreen();
+    } else if(this.state === 'medium' || this.state === 'hard') {
+      this.player.checkScreen();
+      this.checkScreenCollision();
+    }
     this.cars.forEach((car) => {
       if(this.player.checkCollision(car)){
         this.isGameOver = true;
@@ -64,6 +70,12 @@ class Game {
       }
     })
   }
+  checkScreenCollision(){
+    if(this.player.collision){
+      this.isGameOver = true;
+      this.onGameOver()
+    }
+  };
 
   gameOverCallback(callback){
     this.onGameOver = callback

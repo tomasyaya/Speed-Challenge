@@ -13,15 +13,26 @@ const main = () => {
     const splashScreen = buildDom(`
       <section class="splash-screen">
         <h1>Speed Challenge</h1>
-        <button class="start-game-button">Start!</button>
+        <button class="start-game-button">Go Easy!</button>
+        <button class="start-game-medium">I can do it!</button>
+        <button class="start-game-extreme">Do me and call me Martha</button>
       </section>
     `)
-
+    let state = 'easy';
     const startButton = document.querySelector('.start-game-button');
-    startButton.addEventListener('click', buildGameScreen);
+    startButton.addEventListener('click', () => {
+      state = 'easy';
+      buildGameScreen(state);
+    });
+    const mediumButton = document.querySelector('.start-game-medium');
+    mediumButton.addEventListener('click', ()=>{
+      state = 'medium';
+      buildGameScreen(state); 
+    })
+
   };
 
-  const buildGameScreen = () =>{
+  const buildGameScreen = (state) =>{
     const gameScreen = buildDom(`
       <section class="game-screen">
       <h2 class="score-title"></h2>
@@ -45,7 +56,7 @@ const main = () => {
     
 
 
-    const game = new Game(canvasElement);
+    const game = new Game(canvasElement, state);
     game.gameOverCallback(buildGameOverScreen)
     game.changeScore(scoreSum)
     game.startLoop();
