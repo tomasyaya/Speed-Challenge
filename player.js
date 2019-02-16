@@ -24,7 +24,6 @@ class Player {
     }
   };
 
-  
 
   draw() {
     this.context.fillStyle = "red";
