@@ -15,18 +15,23 @@ const main = () => {
         <h1>Speed Challenge</h1>
         <button class="start-game-button">Go Easy!</button>
         <button class="start-game-medium">I can do it!</button>
-        <button class="start-game-extreme">Do me and call me Martha</button>
+        <button class="start-game-hard">Do me and call me Martha</button>
       </section>
     `)
-    let state = 'easy';
+    
     const startButton = document.querySelector('.start-game-button');
     startButton.addEventListener('click', () => {
-      state = 'easy';
+      let state = 'easy';
       buildGameScreen(state);
     });
     const mediumButton = document.querySelector('.start-game-medium');
     mediumButton.addEventListener('click', ()=>{
-      state = 'medium';
+       let state = 'medium';
+      buildGameScreen(state); 
+    });
+    const hardButton = document.querySelector('.start-game-hard');
+    hardButton.addEventListener('click', ()=>{
+      let state = 'hard';
       buildGameScreen(state); 
     })
 
@@ -53,8 +58,6 @@ const main = () => {
       scoreTitle.innerText = `Your score is ${game.score}`
     }
 
-    
-
 
     const game = new Game(canvasElement, state);
     game.gameOverCallback(buildGameOverScreen)
@@ -62,7 +65,7 @@ const main = () => {
     game.startLoop();
     
     
-
+    if(game.state === 'easy' || game.state === 'medium'){
     const setPlayerDirection = (event)=> {
       if(event.code === 'ArrowLeft') {
         game.player.setDirection(-1)
@@ -82,6 +85,20 @@ const main = () => {
     }
     document.addEventListener('keydown', setPlayerDirection)
     document.addEventListener('keyup', allowMovement)
+    
+  }  else if(game.state === 'hard'){
+      const setHardDirection = (event)=> {
+        game.player.move = true;
+        if(event.code === 'ArrowLeft') {
+          game.player.setDirection(-1) 
+        } else if(event.code === 'ArrowRight') {
+          game.player.setDirection(1);
+        }
+        
+      }
+      document.addEventListener('keydown', setHardDirection)
+    };
+
     
   };
 
