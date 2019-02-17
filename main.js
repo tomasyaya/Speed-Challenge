@@ -1,5 +1,6 @@
 'use strict'
 
+var GLOBALSCORE = 0;
 
 const main = () => {
 
@@ -9,13 +10,15 @@ const main = () => {
     return main;
   };
 
+  
+
   const buildSplashScreen = () => {
     const splashScreen = buildDom(`
       <section class="splash-screen">
         <h1>Speed Challenge</h1>
-        <button class="start-game-button">Go Easy!</button>
-        <button class="start-game-medium">I can do it!</button>
-        <button class="start-game-hard">Do me and call me Martha</button>
+        <button class="start-game-button">Easy</button>
+        <button class="start-game-medium">Medium</button>
+        <button class="start-game-hard">Hard</button>
       </section>
     `)
     
@@ -57,13 +60,13 @@ const main = () => {
       let scoreTitle = document.querySelector('.score-title');
       scoreTitle.innerText = `Your score is ${game.score}`
     }
+   
 
 
     const game = new Game(canvasElement, state);
     game.gameOverCallback(buildGameOverScreen)
     game.changeScore(scoreSum)
     game.startLoop();
-    
     
     if(game.state === 'easy' || game.state === 'medium'){
     const setPlayerDirection = (event)=> {
@@ -107,12 +110,23 @@ const main = () => {
     const gameOverScreen = buildDom(`
       <section class="game-over-screen">
         <h1>Game Over</h1>
+        <h2 class="score-title-gameover"></h2>
         <button class="restart-button">Restart</button>
+        <button class="change-difficulty-button">Change Difficulty</button>
       </section>
     `);
 
+    const scoreInGameOver = (event) => {
+      let scoreTitle = document.querySelector('.score-title-gameover');
+      scoreTitle.innerText = `Your score is ${event}`
+    }
+
+    scoreInGameOver(GLOBALSCORE);
+
     const restartButton = document.querySelector('.restart-button');
     restartButton.addEventListener('click', buildGameScreen);
+    const changeButton = document.querySelector('.change-difficulty-button');
+    changeButton.addEventListener('click', buildSplashScreen);
 
   };
 

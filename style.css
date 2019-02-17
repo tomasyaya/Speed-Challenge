@@ -21,9 +21,6 @@ body {
   width: 350px;
   height: 100vh;
   margin: 0 auto;
-  /* display: flex;
-  justify-content: space-between;
-  background: green; */
   
 }
 
@@ -35,45 +32,94 @@ body {
 }
 
 .container {
-  margin: 0 20px;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
   
 }
 
-/* .score-title {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: flex-start;
-}
 
-.score-title {
-  padding-right: 400px;
-  width: 600px;
-  padding-top: 400px;
-}
+/* ------------------------ SPLASH SCREEN ----------------------- */
+
 
 .splash-screen {
-  background: #f2f2f2;;
-  width: 100%;
-  height: 2000px;
+  margin-left: 15%;
+  margin-top: 10%;
+  height: 600px;
+  width: 70%;
+  border: solid 2px black;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-align: center;
+  background: #484747;
+  border: 6px solid hsl(0, 100%, 50%);
+  border-radius: 10px;
+  -webkit-animation: rainbow 5s infinite alternate;
 }
 
 .splash-screen h1 {
-  text-align: center;
-  text-transform: uppercase;
-  font-size: 30px;
+  font-family: 'Lobster', cursive;
+  font-size: 50px;
+  color: #FCFCFC;
+}
 
+.splash-screen button {
+  width: 180px;
+  height: 70px;
+  text-transform: uppercase;
+  margin-left: 42%;
+  margin-top: 1%;
+  font-weight: bold;
+  background: gray, 0.1;
+  border-radius: 10px;
+}
+
+.start-game-button {
+  color: #FCFCFC;
+  background: #5EFA4F;
+  border: 2px solid #5EFA4F;
+  transform: translate(0);
+  transition-duration: 0.3s;
+  font-size: 20px;
+}
+
+.start-game-medium {
+  color: #FCFCFC;
+  background: #FDE923;
+  border: 2px solid #F1F11E;
+  transform: translate(0);
+  transition-duration: 0.3s;
+  text-shadow: #484747;
+  font-size: 20px;
+}
+
+.start-game-hard {
+  color: #FCFCFC;
+  background: #FD2D23;
+  border: 2px solid #FD2D23;
+  transform: translate(0);
+  transition-duration: 0.3s;
+  font-size: 20px;
+}
+
+.start-game-button:hover {
+  transform: scale(1.1);
+}
+.start-game-medium:hover {
+  transform: scale(1.1);
+}
+.start-game-hard:hover {
+  transform: scale(1.1);
+}
+
+@-webkit-keyframes rainbow {
+  0% {border-color: hsl(0, 100%, 50%);}
+  100% {border-color: hsl(255, 100%, 50%);}
 }
 
 
-.splash-screen button {
-  height: 50px;
-  width: 40%;
-  margin: 0 500px;
-  background: #f2f2f2;
-  border-radius: 2%;
-  padding-bottom: 400px;
-} */
+
+
+

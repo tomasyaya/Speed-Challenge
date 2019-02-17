@@ -26,7 +26,7 @@ class Game {
         
       };
 
-
+      
       this.actualizarScore()
       this.scoreCount();
       this.checkCollision();
@@ -85,9 +85,11 @@ class Game {
     this.actualizarScore = callback
   }
 
+
   scoreCount(){
     this.score = this.score + 10
     console.log(this.score)
+    GLOBALSCORE = this.score;
   }
 
 }
