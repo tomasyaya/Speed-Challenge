@@ -120,7 +120,7 @@ const main = () => {
 
     const scoreInGameOver = (event) => {
       let scoreTitle = document.querySelector('.score-title-gameover');
-      scoreTitle.innerText = `Your score is ${event}`
+      scoreTitle.innerText = `Your score was ${event}`
     }
 
     scoreInGameOver(GLOBALSCORE);

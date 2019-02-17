@@ -91,5 +91,6 @@ class Game {
     console.log(this.score)
     GLOBALSCORE = this.score;
   }
-
 }
+
+

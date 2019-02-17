@@ -166,4 +166,86 @@ html {
   }
 }
 
+/* ------------- GAME OVER SCREEN ----------------- */
+
+.game-over-screen {
+  display: flex;
+  margin-left: 15%;
+  margin-top: 10%;
+  flex-direction: column;
+  text-align: center;
+  text-transform:  uppercase;
+  height: 600px;
+  width: 70%;
+  background: #484747;
+  border: 6px solid hsl(0, 100%, 50%);
+  border-radius: 10px;
+  -webkit-animation: rainbow 5s infinite alternate;
+  
+}
+
+.game-over-screen button {
+  width: 180px;
+  height: 70px;
+  text-transform: uppercase;
+  margin-left: 42%;
+  margin-top: 1%;
+  font-weight: bold;
+  font-family: 'Open Sans Condensed', sans-serif;
+  
+}
+
+.game-over-screen h1 {
+  font-family: 'Lobster', sans-serif;
+  color: #FAFAFA;
+  font-size: 40px;
+  margin-top: 10%;
+}
+
+.game-over-screen h2 {
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.game-over-screen {
+  color: #FAFAFA;
+}
+
+.restart-button {
+  background: #8585e0;
+  border-radius: 10px;
+  border: 2px solid #8585e0;
+  color: #FAFAFA;
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 10px;
+  width: 180px;
+  height: 70px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: bold;
+}
+
+.change-difficulty-button {
+  background: #df80ff;
+  border-radius: 10px;
+  border: 2px solid #df80ff;
+  color: #FAFAFA;
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 10px;
+  margin-bottom: 10%;
+  width: 180px;
+  height: 70px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: bold;
+}
+
+
+.restart-button:hover {
+  transform: scale(1.1);
+}
+.change-difficulty-button:hover {
+  transform: scale(1.1);
+}
+
+
 
