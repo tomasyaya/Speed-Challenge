@@ -42,10 +42,12 @@ const main = () => {
 
   const buildGameScreen = (state) =>{
     const gameScreen = buildDom(`
-      <section class="game-screen">
-      <h2 class="score-title"></h2>
-      <canvas class="main-canvas"></canvas>
-      </screen>
+      <section class="game-container">
+        <h2 class="score-title"></h2>
+        <section class="game-screen">
+          <canvas class="main-canvas"></canvas>
+        </section>
+      </section>
     `);
 
     const width = document.querySelector('.game-screen').offsetWidth;
