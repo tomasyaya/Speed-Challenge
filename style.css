@@ -58,8 +58,7 @@ html {
   width: 180px;
   height: 70px;
   text-transform: uppercase;
-  margin-left: 42%;
-  margin-top: 1%;
+  margin: 1% auto;
   font-weight: bold;
   background: gray, 0.1;
   border-radius: 10px;
@@ -116,8 +115,7 @@ html {
 /* ----------------------------------- SELECT PLAYER ---------------------- */
 
   .player-container {
-  margin-left: 15%;
-  margin-top: 10%;
+  margin: 5% auto;
   height: 600px;
   width: 70%;
   border: solid 2px black;
@@ -136,6 +134,7 @@ html {
     font-size: 40px;
     color: #FCFCFC;
     padding-bottom: 10%;
+    margin: 0 auto;
   }
 
   .player-container button {
@@ -158,19 +157,22 @@ html {
 
   .main-div {
     display: flex;
-    justify-content: space-around;
-    padding-left: 250px;
-    padding-right: 250px;
+    justify-content: space-between;
+    padding-left: 20%;
+    padding-right: 20%;
+    
   }
 
   .car-one {
     display: flex;
     flex-direction: column;
+    margin: 5% auto;
   }
 
   .car-two {
     display: flex;
     flex-direction: column;
+    margin: 5% auto;
   }
 
   .player-container button:hover {
@@ -194,16 +196,15 @@ html {
 
 
 .game-screen {
-  width: 350px;
+  width: 410px;
   height: 795px;
   margin: 0 auto;
   
 }
 
 .main-canvas {
-  border-left: 2px solid black;
-  border-right: 2px solid black;
-  background-image: url('Images/carretera.jpg')
+  
+  background-image: url('Images/carretera.jpg');
   
 }
 
@@ -239,8 +240,9 @@ html {
 
 .game-over-screen {
   display: flex;
-  margin-left: 15%;
-  margin-top: 10%;
+  /* margin-left: 15%;
+  margin-top: 10%; */
+  margin: 0 auto;
   flex-direction: column;
   text-align: center;
   text-transform:  uppercase;
@@ -257,8 +259,7 @@ html {
   width: 180px;
   height: 70px;
   text-transform: uppercase;
-  margin-left: 42%;
-  margin-top: 1%;
+  margin: 1% auto;
   font-weight: bold;
   font-family: 'Open Sans Condensed', sans-serif;
   
@@ -316,5 +317,33 @@ html {
   transform: scale(1.1);
 }
 
+/* ------------------- MEDIA QUERY ---------------------- */
 
+
+@media (min-width: 600px) and (max-width: 700px) {
+  .game-screen {
+    width: 190px;
+    height: 795px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 705px) and (max-width: 900px) {
+  .game-screen {
+    width: 220px;
+    height: 795px;
+    margin: 0 auto;
+  }
+  .car-one {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20%;
+  }
+
+  .car-two {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20%;
+  }
+}
 

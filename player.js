@@ -41,7 +41,7 @@ class Player {
   }
 
   checkScreen() {
-    if(this.x > 320) {
+    if(this.x > this.canvas.width - 20) {
       this.direction = -1;
       this.collision = true;
     } else if(this.x < 2) {
@@ -62,7 +62,5 @@ class Player {
 
     return false;
   };
-
-  
 
 }

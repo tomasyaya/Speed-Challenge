@@ -10,6 +10,9 @@ class Game {
     this.score = 0;
     this.state = state;
     this.player = '';
+    this.pauseGame = false;
+    
+    
   }
   
 
@@ -17,9 +20,10 @@ class Game {
 
     this.player = new Player(this.canvas, this.player);
     
-    console.log(this.state)
+   
     const loop = ()=> {
 
+      if(this.pauseGame === false){
       if(Math.random() > 0.98) {
         const x = Math.random() * this.canvas.width;
         if((x > 15  && x < 130) || (x > 160 && x < 290) ) 
@@ -28,19 +32,22 @@ class Game {
       };
 
       
-      this.actualizarScore()
+      this.actualizarScore();
       this.scoreCount();
       this.checkCollision();
       this.updateCanvas();
       this.clearCanvas();
       this.drawCanvas();
-
+    }
+      
       if(!this.isGameOver)
       {window.requestAnimationFrame(loop);}
-    };
-
+      
+  };
     window.requestAnimationFrame(loop);
   };
+
+
 
 
   updateCanvas() {
@@ -67,32 +74,32 @@ class Game {
     this.cars.forEach((car) => {
       if(this.player.checkCollision(car)){
         this.isGameOver = true;
-        this.onGameOver()
+        this.onGameOver();
       }
     })
   }
   checkScreenCollision(){
     if(this.player.collision){
       this.isGameOver = true;
-      this.onGameOver(this.state)
-      console.log(this.state);
+      this.onGameOver(this.state);
+      
     }
   };
 
   gameOverCallback(callback){
-    this.onGameOver = callback
+    this.onGameOver = callback;
   };
 
   changeScore(callback){
-    this.actualizarScore = callback
+    this.actualizarScore = callback;
   }
 
 
   scoreCount(){
-    this.score = this.score + 1
-    console.log(this.score)
+    this.score = this.score + 1;
     GLOBALSCORE = this.score;
   }
+
 }
 
 

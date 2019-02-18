@@ -109,6 +109,8 @@ const main = () => {
     game.changeScore(scoreSum)
     game.startLoop();
     game.player.playerSelect = GLOBALPLAYER;
+    // game.bestScores(GLOBALSCORE);
+    // console.log(GLOBALSCORE);
     
     if(game.state === 'easy' || game.state === 'medium'){
     const setPlayerDirection = (event)=> {
@@ -130,6 +132,16 @@ const main = () => {
     }
     document.addEventListener('keydown', setPlayerDirection)
     document.addEventListener('keyup', allowMovement)
+    document.addEventListener('keydown', function(event){
+      if(event.code === 'Space'){
+      if(game.pauseGame === true){
+        game.pauseGame = false;
+      } else if(game.pauseGame === false){
+        game.pauseGame = true;
+      }
+    }
+      
+    });
     
   }  else if(game.state === 'hard'){
       const setHardDirection = (event)=> {
