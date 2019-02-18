@@ -1,8 +1,9 @@
 'use strict'
 
 var GLOBALSCORE = 0;
+var HIGHSCORE = 0;
 var GLOBALSTATE = '';
-var GLOBALPLAYER = '';
+var GLOBALPLAYER = 'player one';
 
 
 const main = () => {
@@ -154,6 +155,7 @@ const main = () => {
         <h2 class="score-title-gameover"></h2>
         <button class="restart-button">Restart</button>
         <button class="change-difficulty-button">Change Difficulty</button>
+        <h2 class='high-score'></h2>
       </section>
     `);
 
@@ -163,6 +165,21 @@ const main = () => {
     }
 
     scoreInGameOver(GLOBALSCORE);
+
+    const highScore = (event) => {
+      let highScore = document.querySelector('.high-score');
+      highScore.innerText = `High Score ${event}`;
+    }
+
+    const checkHighScore = (event) => {
+      if(event > HIGHSCORE) {
+        HIGHSCORE = event;
+      };
+    }
+
+    checkHighScore(GLOBALSCORE);
+
+    highScore(HIGHSCORE);
 
     const restartButton = document.querySelector('.restart-button');
     restartButton.addEventListener('click', function(){

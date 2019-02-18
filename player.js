@@ -9,7 +9,7 @@ class Player {
   this.x = this.canvas.width / 2;
   this.y = this.canvas.height - 80;
   this.direction = 0;
-  this.speed = 2;
+  this.speed = 5;
   this.live = 1;
   this.move = false;
   this.character = new Image;

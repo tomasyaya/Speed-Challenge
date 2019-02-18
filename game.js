@@ -89,7 +89,7 @@ class Game {
 
 
   scoreCount(){
-    this.score = this.score + 10
+    this.score = this.score + 1
     console.log(this.score)
     GLOBALSCORE = this.score;
   }
