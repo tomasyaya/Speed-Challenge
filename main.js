@@ -2,6 +2,7 @@
 
 var GLOBALSCORE = 0;
 var GLOBALSTATE = '';
+var GLOBALPLAYER = '';
 
 
 const main = () => {
@@ -21,6 +22,7 @@ const main = () => {
         <button class="start-game-button">Easy</button>
         <button class="start-game-medium">Medium</button>
         <button class="start-game-hard">Hard</button>
+        <button class="select-player">Select Player</button>
       </section>
     `)
     
@@ -41,9 +43,33 @@ const main = () => {
       let state = 'hard';
       GLOBALSTATE = 'hard';
       buildGameScreen(state); 
-    })
+    });
+    const playerButton = document.querySelector('.select-player');
+    playerButton.addEventListener('click', buildSelecPlayerScreen);
 
   };
+
+  const buildSelecPlayerScreen = (event) => {
+    const playerScreen = buildDom(`
+      <section class="player-container">
+        <img src='Images/car5.png' class="red-car'>
+        <button class='player-one'>Player One</button>
+        <img src='Images/car610.png' class='gray-car'>
+        <button class='player-two'>Player Two</button>
+      </section>
+    `);
+
+    const playerOne = document.querySelector('.player-one');
+    playerOne.addEventListener('click', function(){
+      GLOBALPLAYER = 'player one';
+      buildSplashScreen();
+    });
+    const playerTwo = document.querySelector('.player-two');
+    playerTwo.addEventListener('click', function(){
+      GLOBALPLAYER = 'player two';
+      buildSplashScreen();
+    });
+  }
 
   const buildGameScreen = (state) =>{
     const gameScreen = buildDom(`
@@ -74,6 +100,7 @@ const main = () => {
     game.gameOverCallback(buildGameOverScreen)
     game.changeScore(scoreSum)
     game.startLoop();
+    game.player.playerSelect = GLOBALPLAYER;
     
     if(game.state === 'easy' || game.state === 'medium'){
     const setPlayerDirection = (event)=> {

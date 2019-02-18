@@ -9,12 +9,13 @@ class Game {
     this.isGameOver = false;
     this.score = 0;
     this.state = state;
+    this.player = '';
   }
   
 
    startLoop(){
 
-    this.player = new Player(this.canvas);
+    this.player = new Player(this.canvas, this.player);
     
     console.log(this.state)
     const loop = ()=> {

@@ -1,7 +1,7 @@
 'use strict'
 
 class Player {
-  constructor(canvas){
+  constructor(canvas, player){
   this.canvas = canvas;
   this.context = this.canvas.getContext('2d');
   this.size = 35;
@@ -14,8 +14,10 @@ class Player {
   this.move = false;
   this.character = new Image;
   this.character.src = 'Images/car5.png';
+  this.characterTwo = new Image;
+  this.characterTwo.src = 'Images/car610.png';
   this.collision = false;
-  
+  this.playerSelect = '';
 }
 
   update() {
@@ -27,8 +29,11 @@ class Player {
 
   draw() {
     this.context.fillStyle = "red";
+    if(this.playerSelect === 'player one'){
     this.context.drawImage(this.character, this.x, this.y, this.size, this.size + this.sizeY);
-    
+    } else if(this.playerSelect === 'player two') {
+      this.context.drawImage(this.characterTwo, this.x, this.y, this.size, this.size + this.sizeY);
+    }
   };
 
   setDirection(direction) {
