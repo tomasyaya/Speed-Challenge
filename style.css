@@ -63,6 +63,9 @@ html {
   font-weight: bold;
   background: gray, 0.1;
   border-radius: 10px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 20px;
+  color: #FCFCFC;
 }
 
 .start-game-button {
@@ -76,8 +79,8 @@ html {
 
 .start-game-medium {
   color: #FCFCFC;
-  background: #FDE923;
-  border: 2px solid #F1F11E;
+  background: #FBC910;
+  border: 2px solid #FBC910;
   transform: translate(0);
   transition-duration: 0.3s;
   text-shadow: #484747;
@@ -93,22 +96,86 @@ html {
   font-size: 20px;
 }
 
+.select-player {
+  background: #df80ff;
+  border: 2px solid #df80ff;
+
+}
 
 
-.start-game-button:hover {
+.splash-screen button:hover {
   transform: scale(1.1);
 }
-.start-game-medium:hover {
-  transform: scale(1.1);
-}
-.start-game-hard:hover {
-  transform: scale(1.1);
-}
+
 
 @-webkit-keyframes rainbow {
   0% {border-color: hsl(0, 100%, 50%);}
   100% {border-color: hsl(255, 100%, 50%);}
 }
+
+/* ----------------------------------- SELECT PLAYER ---------------------- */
+
+  .player-container {
+  margin-left: 15%;
+  margin-top: 10%;
+  height: 600px;
+  width: 70%;
+  border: solid 2px black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  background: #484747;
+  border: 6px solid hsl(0, 100%, 50%);
+  border-radius: 10px;
+  -webkit-animation: rainbow 5s infinite alternate;
+  }
+
+  .player-container h1 {
+    font-family: 'Lobster', sans-serif;
+    font-size: 40px;
+    color: #FCFCFC;
+    padding-bottom: 10%;
+  }
+
+  .player-container button {
+    border-radius: 50%;
+    height: 90px;
+    background: #8585e0;
+    border: none;
+    color: #FCFCFC;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .player-container img {
+    width: 100px;
+    height: 150px;
+    padding-bottom: 20px;
+    
+  }
+
+  .main-div {
+    display: flex;
+    justify-content: space-around;
+    padding-left: 250px;
+    padding-right: 250px;
+  }
+
+  .car-one {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .car-two {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .player-container button:hover {
+    transform: scale(1.1);
+  }
 
 /* ----------------------------------- GAME SCREEN ------------------------- */
 

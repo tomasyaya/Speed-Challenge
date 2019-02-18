@@ -52,10 +52,17 @@ const main = () => {
   const buildSelecPlayerScreen = (event) => {
     const playerScreen = buildDom(`
       <section class="player-container">
-        <img src='Images/car5.png' class="red-car'>
-        <button class='player-one'>Player One</button>
-        <img src='Images/car610.png' class='gray-car'>
-        <button class='player-two'>Player Two</button>
+      <h1>Select Your Player</h1>
+      <div class='main-div'>
+        <div class='car-one'>
+          <img id="red-car" src='Images/car5.png'>
+          <button class='player-one'>RED</button>
+        </div>
+        <div class='car-two'>  
+          <img id="gray-car" src='Images/car610.png'>
+          <button class='player-two'>GRAY</button>
+        </div>  
+      </div>    
       </section>
     `);
 
