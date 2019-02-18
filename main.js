@@ -1,6 +1,8 @@
 'use strict'
 
 var GLOBALSCORE = 0;
+var GLOBALSTATE = '';
+
 
 const main = () => {
 
@@ -25,16 +27,19 @@ const main = () => {
     const startButton = document.querySelector('.start-game-button');
     startButton.addEventListener('click', () => {
       let state = 'easy';
+      GLOBALSTATE = 'easy';
       buildGameScreen(state);
     });
     const mediumButton = document.querySelector('.start-game-medium');
     mediumButton.addEventListener('click', ()=>{
        let state = 'medium';
+       GLOBALSTATE = 'medium';
       buildGameScreen(state); 
     });
     const hardButton = document.querySelector('.start-game-hard');
     hardButton.addEventListener('click', ()=>{
       let state = 'hard';
+      GLOBALSTATE = 'hard';
       buildGameScreen(state); 
     })
 
@@ -108,7 +113,7 @@ const main = () => {
   };
 
 
-  const buildGameOverScreen = () => {
+  const buildGameOverScreen = (state) => {
     const gameOverScreen = buildDom(`
       <section class="game-over-screen">
         <h1>Game Over</h1>
@@ -126,7 +131,9 @@ const main = () => {
     scoreInGameOver(GLOBALSCORE);
 
     const restartButton = document.querySelector('.restart-button');
-    restartButton.addEventListener('click', buildGameScreen);
+    restartButton.addEventListener('click', function(){
+      buildGameScreen(GLOBALSTATE)
+    })
     const changeButton = document.querySelector('.change-difficulty-button');
     changeButton.addEventListener('click', buildSplashScreen);
 

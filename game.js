@@ -16,7 +16,7 @@ class Game {
 
     this.player = new Player(this.canvas);
     
-    
+    console.log(this.state)
     const loop = ()=> {
 
       if(Math.random() > 0.98) {
@@ -73,7 +73,8 @@ class Game {
   checkScreenCollision(){
     if(this.player.collision){
       this.isGameOver = true;
-      this.onGameOver()
+      this.onGameOver(this.state)
+      console.log(this.state);
     }
   };
 

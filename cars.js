@@ -7,7 +7,7 @@ class Car {
     this.size = 35;
     this.sizeY = 25;
     this.direction = 1;
-    this.speed = 5;
+    this.speed = 10;
     this.x = x;
     this.y = 0;
     this.policeCar = new Image();
