@@ -121,50 +121,63 @@ const main = () => {
     
     
     if(game.state === 'easy' || game.state === 'medium'){
-    const setPlayerDirection = (event)=> {
-      if(event.code === 'ArrowLeft') {
-        game.player.setDirection(-1)
-        game.player.move = true;
-      } else if(event.code === 'ArrowRight') {
-        game.player.setDirection(1);
-        game.player.move = true;
-      }
-    };
+        const setPlayerDirection = (event)=> {
+          if(event.code === 'ArrowLeft') {
+            game.player.setDirection(-1)
+            game.player.move = true;
+          } else if(event.code === 'ArrowRight') {
+            game.player.setDirection(1);
+            game.player.move = true;
+          }
+        };
 
-    const allowMovement = (event) => {
-      if(event.code === 'ArrowLeft'){
-        game.player.move = false;
-      } else if(event.code === 'ArrowRight'){
-        game.player.move = false;
-      }
-    }
-    document.addEventListener('keydown', setPlayerDirection)
-    document.addEventListener('keyup', allowMovement)
-    document.addEventListener('keydown', function(event){
-      if(event.code === 'Space'){
-      if(game.pauseGame === true){
-        game.pauseGame = false;
-      } else if(game.pauseGame === false){
-        game.pauseGame = true;
-      }
-    }
-      
-    });
+        const allowMovement = (event) => {
+          if(event.code === 'ArrowLeft'){
+            game.player.move = false;
+          } else if(event.code === 'ArrowRight'){
+            game.player.move = false;
+          }
+        };
+
+        document.addEventListener('keydown', setPlayerDirection)
+        document.addEventListener('keyup', allowMovement)
+        document.addEventListener('keydown', function(event){
+          if(event.code === 'Space'){
+            if(game.pauseGame === true){
+              game.pauseGame = false;
+            } else if(game.pauseGame === false){
+              game.pauseGame = true;
+            }
+          } 
+        });
     
-  }  else if(game.state === 'hard'){
-      const setHardDirection = (event)=> {
-        game.player.move = true;
-        if(event.code === 'ArrowLeft') {
-          game.player.setDirection(-1) 
-        } else if(event.code === 'ArrowRight') {
-          game.player.setDirection(1);
-        }
-        
-      }
+    } else if(game.state === 'hard'){
+        const setHardDirection = (event)=> {
+          game.player.move = true;
+          if(event.code === 'ArrowLeft') {
+            game.player.setDirection(-1) 
+          } else if(event.code === 'ArrowRight') {
+            game.player.setDirection(1);
+          }
+      };
+
       document.addEventListener('keydown', setHardDirection)
+      document.addEventListener('keydown', function(event){
+        if(event.code === 'KeyS'){
+          game.bulletStatus = true;
+          console.log(event)
+          console.log(game.bulletStatus);
+        }
+      });
+      document.addEventListener('keyup', function(event){
+        if(event.code === 'KeyS'){
+          game.bulletStatus = false;
+          console.log(event)
+          console.log(game.bulletStatus);
+        };
+      })
     };
 
-    
   };
 
 // ------------------- GAME OVER SCREEN ----------------------------//

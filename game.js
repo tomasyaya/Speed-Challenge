@@ -12,7 +12,7 @@ class Game {
     this.state = state;
     this.player = '';
     this.pauseGame = false;
-    
+    this.bulletStatus = false;
     
   }
   
@@ -30,9 +30,11 @@ class Game {
         if((x > 15  && x < 130) || (x > 160 && x < 290) ) 
         {this.cars.push(new Car(this.canvas, x))} 
       };
-      
-      this.bullet = new Bullet(this.canvas, this.player.x)
-      this.bullets.push(this.bullet);
+
+      if(GLOBALSTATE === 'hard' && this.score > 100 && this.bulletStatus === true) {
+        this.bullet = new Bullet(this.canvas, this.player.x)
+        this.bullets.push(this.bullet);
+      };
       
       this.actualizarScore();
       this.scoreCount();
@@ -40,7 +42,7 @@ class Game {
       this.updateCanvas();
       this.clearCanvas();
       this.drawCanvas();
-    }
+    };
       
       if(!this.isGameOver)
       {window.requestAnimationFrame(loop);}
@@ -61,7 +63,10 @@ class Game {
   drawCanvas() {
     this.player.draw();
     this.bullets.forEach(bullet => {bullet.draw()});
-    this.cars.forEach(car => {car.draw()});
+    this.cars.forEach(car => {
+      car.draw()
+      car.removeHitCar();
+    });
   };
 
   clearCanvas() {
@@ -75,18 +80,23 @@ class Game {
       this.player.checkScreen();
       this.checkScreenCollision();
     }
-    this.cars.forEach((car) => {
+    this.cars.forEach((car, index) => {
       if(this.player.checkCollision(car)){
         this.isGameOver = true;
         this.onGameOver();
-      }
+      } 
+      this.bullets.forEach((bullet) => {
+        if(car.checkCollision(bullet)){
+          this.cars.splice(index, 1);
+        }
+      });
     })
-  }
+  };
+
   checkScreenCollision(){
     if(this.player.collision){
       this.isGameOver = true;
       this.onGameOver(this.state);
-      
     }
   };
 
@@ -96,13 +106,13 @@ class Game {
 
   changeScore(callback){
     this.actualizarScore = callback;
-  }
+  };
 
 
   scoreCount(){
     this.score = this.score + 1;
     GLOBALSCORE = this.score;
-  }
+  };
 
 }
 

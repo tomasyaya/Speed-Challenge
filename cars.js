@@ -32,7 +32,6 @@ class Car {
   draw(){
     this.context.fillStyle = "black";
     this.context.drawImage(this.img, this.x, this.y, this.size, this.size + this.sizeY);
-    
   };
 
   images(img){
@@ -43,7 +42,7 @@ class Car {
     const collideRight = this.x + this.size  > bullet.x;
     const collideLeft = this.x  < bullet.x + bullet.size;
     const collideTop = this.y  < bullet.y + bullet.size;
-    const collideBottom = this.y + this.size > bullet.y;
+    const collideBottom = this.y + this.sizeY + this.size > bullet.y;
 
     if(collideRight && collideLeft && collideBottom && collideTop) {
       return true
@@ -54,8 +53,7 @@ class Car {
   
   removeHitCar(car){
     if(this.collision === true){
-      
+      this.context.clearRect(car.x, car.y, car.size, car.sizeY)
     }
   }
-
 }
