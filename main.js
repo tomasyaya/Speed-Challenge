@@ -246,8 +246,10 @@ const main = () => {
             <h1>High Scores</h1>  
             <ul class="high-score-ul">
             </ul>
-            <button class="go-start-screen">Start Screen</button>
-            <button class="go-back">Go Back</button>
+            <div>
+              <button class="go-start-screen">Start Screen</button>
+              <button class="go-back">Go Back</button>
+            </div>
           </section>
        `);
 

@@ -261,7 +261,7 @@ html {
   height: 600px;
   width: 70%;
   background: #484747;
-  border: 2px solid hsl(0, 100%, 50%);
+  border: 6px solid hsl(0, 100%, 50%);
   border-radius: 10px;
   -webkit-animation: rainbow 5s infinite alternate;
   
@@ -329,7 +329,7 @@ html {
   transform: scale(1.1);
 }
 
-/* ------------- HIFGH SCORE SCREEN ----------------- */
+/* ------------- HIGH SCORE SCREEN ----------------- */
 
 .high-score-screen {
   margin-left: 15%;
@@ -347,6 +347,11 @@ html {
   -webkit-animation: rainbow 5s infinite alternate;
 }
 
+.high-score-screen div {
+  display: flex;
+  flex-direction: column;
+}
+
 .high-score-screen h1 {
   font-family: 'Lobster', sans-serif;
   font-size: 50px;
@@ -362,6 +367,7 @@ html {
   text-align: center;
   margin: 0 auto;
   padding-top: 5%;
+  padding-right: 5%;
 }
 
 .high-score-button {
@@ -372,6 +378,30 @@ html {
   color: #FAFAFA;
   background: #484747;
   font-size: 20px;
+}
+
+.go-start-screen {
+  color: #FAFAFA;
+  font-size: 20px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  margin: 1% auto;
+  background: #df80ff;
+  border: 2px solid #df80ff;
+  border-radius: 10px;
+  width: 100px;
+  height: 40px;
+}
+
+.go-back {
+  color: #FAFAFA;
+  font-size: 20px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  background: #8585e0;
+  border-radius: 10px;
+  border: 2px solid #8585e0;
+  width: 100px;
+  height: 40px;
+  margin: 0 auto;
 }
 
 
