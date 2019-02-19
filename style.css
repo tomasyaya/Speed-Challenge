@@ -329,6 +329,43 @@ html {
   transform: scale(1.1);
 }
 
+/* ------------- HIFGH SCORE SCREEN ----------------- */
+
+.high-score-screen {
+  margin-left: 15%;
+  margin-top: 10%;
+  height: 600px;
+  width: 70%;
+  border: solid 2px black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  background: #484747;
+  border: 6px solid hsl(0, 100%, 50%);
+  border-radius: 10px;
+  -webkit-animation: rainbow 5s infinite alternate;
+}
+
+.high-score-screen h1 {
+  font-family: 'Lobster', sans-serif;
+  font-size: 50px;
+  color: #FAFAFA;
+  margin: 0 auto;
+}
+
+.high-score-screen ul {
+  list-style: none;
+  font-family: 'Open Sans Condensed', sans-serif;
+  color: #FAFAFA;
+  font-size: 30px;
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 5%;
+}
+
+
+
 /* ------------------- MEDIA QUERY ---------------------- */
 
 

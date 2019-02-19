@@ -243,10 +243,9 @@ const main = () => {
     const buildHighScoresScreen = () =>{
       const highScoreScreen = buildDom(`
           <section class="high-score-screen">
+            <h1>High Scores</h1>  
             <ul class="high-score-ul">
             </ul>
-            <h1>Hello</h1>
-            
           </section>
        `);
     };
