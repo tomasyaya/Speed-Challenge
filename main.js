@@ -163,6 +163,16 @@ const main = () => {
           } else if(event.code === 'ArrowRight') {
             game.player.setDirection(1);
           }
+
+          document.addEventListener('keydown', function(event){
+            if(event.code === 'Space'){
+              if(game.pauseGame === true){
+                game.pauseGame = false;
+              } else if(game.pauseGame === false){
+                game.pauseGame = true;
+              }
+            } 
+          });
       };
 
       document.addEventListener('keydown', setHardDirection)
@@ -194,8 +204,10 @@ const main = () => {
         <button class="restart-button">Restart</button>
         <button class="change-difficulty-button">Change Difficulty</button>
         <h2 class='high-score'></h2>
+        <button class="high-score-button">Show High Score</button>
       </section>
     `);
+    
 
     const scoreInGameOver = (event) => {
       let scoreTitle = document.querySelector('.score-title-gameover');
@@ -226,11 +238,71 @@ const main = () => {
     const changeButton = document.querySelector('.change-difficulty-button');
     changeButton.addEventListener('click', buildSplashScreen);
 
+
+  // ----------------- HIGH SCORES ----------------------
+    const buildHighScoresScreen = () =>{
+      const highScoreScreen = buildDom(`
+          <section class="high-score-screen">
+            <ul class="high-score-ul">
+            </ul>
+            <h1>Hello</h1>
+            
+          </section>
+       `);
+    };
+
+     const localStorageScores = (event) => {
+        if(localStorage.getItem('Score') !== null){
+          let localScores = JSON.parse(localStorage.getItem('Score'));
+
+          localScores.push(event);
+
+          let sortArr = localScores.sort(function(a,b){return b - a;})
+            if(sortArr.length >= 5) {
+              const slicedArray = sortArr.slice(0, 5)
+              localStorage.setItem('Score', JSON.stringify(slicedArray));
+            } else {
+              localStorage.setItem('Score', JSON.stringify(sortArr));
+            } 
+        } 
+        else {
+          const numberArray = [event]
+          localStorage.setItem('Score', JSON.stringify(numberArray));
+        }
+     }
+     
+     localStorageScores(GLOBALSCORE);
+
+     const highScoresButton = document.querySelector('.high-score-button');
+     highScoresButton.addEventListener('click', () => {
+      buildHighScoresScreen();
+      fillHighScoreUl();
+     });
+
+     const fillHighScoreUl = () => {
+       let highScoreArr = JSON.parse(localStorage.getItem('Score'));
+       highScoreArr.forEach(val => {
+         let highScoreLi = document.createElement('li');
+         let highScoreUl = document.querySelector('.high-score-ul');
+         highScoreLi.innerText = `${val}`;
+         highScoreUl.appendChild(highScoreLi);
+       });
+
+      }
+   
+
+
+
   };
 
 
 
 
+
+
+
+
+//// SPLASH SCREEN STARTS ////
   buildSplashScreen();
 };
 
