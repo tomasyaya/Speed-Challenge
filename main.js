@@ -39,18 +39,21 @@ const main = () => {
       GLOBALSTATE = 'easy';
       buildGameScreen(state);
     });
+
     const mediumButton = document.querySelector('.start-game-medium');
     mediumButton.addEventListener('click', ()=>{
        let state = 'medium';
        GLOBALSTATE = 'medium';
       buildGameScreen(state); 
     });
+
     const hardButton = document.querySelector('.start-game-hard');
     hardButton.addEventListener('click', ()=>{
       let state = 'hard';
       GLOBALSTATE = 'hard';
       buildGameScreen(state); 
     });
+
     const playerButton = document.querySelector('.select-player');
     playerButton.addEventListener('click', buildSelecPlayerScreen);
 
@@ -116,82 +119,73 @@ const main = () => {
     // --------------- STARTS THE GAME ------------------
 
     const game = new Game(canvasElement, state);
-    game.gameOverCallback(buildGameOverScreen)
-    game.changeScore(scoreSum)
+    game.gameOverCallback(buildGameOverScreen);
+    game.changeScore(scoreSum);
     game.startLoop();
     game.player.playerSelect = GLOBALPLAYER;
     
-    
-    
-    
-    if(game.state === 'easy' || game.state === 'medium'){
-        const setPlayerDirection = (event)=> {
-          if(event.code === 'ArrowLeft') {
-            game.player.setDirection(-1)
-            game.player.move = true;
-          } else if(event.code === 'ArrowRight') {
-            game.player.setDirection(1);
-            game.player.move = true;
-          }
-        };
-
-        const allowMovement = (event) => {
-          if(event.code === 'ArrowLeft'){
-            game.player.move = false;
-          } else if(event.code === 'ArrowRight'){
-            game.player.move = false;
-          }
-        };
-
-        document.addEventListener('keydown', setPlayerDirection)
-        document.addEventListener('keyup', allowMovement)
-        document.addEventListener('keydown', function(event){
-          if(event.code === 'Space'){
-            if(game.pauseGame === true){
-              game.pauseGame = false;
-            } else if(game.pauseGame === false){
-              game.pauseGame = true;
-            }
-          } 
-        });
-    
-    } else if(game.state === 'hard'){
-        const setHardDirection = (event)=> {
-          game.player.move = true;
-          if(event.code === 'ArrowLeft') {
-            game.player.setDirection(-1) 
-          } else if(event.code === 'ArrowRight') {
-            game.player.setDirection(1);
-          }
-
+      if(game.state === 'easy' || game.state === 'medium'){
+          const setPlayerDirection = (event)=> {
+            if(event.code === 'ArrowLeft') {
+              game.player.setDirection(-1)
+              game.player.move = true;
+            } else if(event.code === 'ArrowRight') {
+              game.player.setDirection(1);
+              game.player.move = true;
+            };
+          };
+          const allowMovement = (event) => {
+            if(event.code === 'ArrowLeft'){
+              game.player.move = false;
+            } else if(event.code === 'ArrowRight'){
+              game.player.move = false;
+            };
+          };
+          document.addEventListener('keydown', setPlayerDirection)
+          document.addEventListener('keyup', allowMovement)
           document.addEventListener('keydown', function(event){
             if(event.code === 'Space'){
               if(game.pauseGame === true){
                 game.pauseGame = false;
               } else if(game.pauseGame === false){
                 game.pauseGame = true;
-              }
-            } 
+              };
+            }; 
           });
+      } else if(game.state === 'hard'){
+          const setHardDirection = (event)=> {
+            game.player.move = true;
+            if(event.code === 'ArrowLeft') {
+              game.player.setDirection(-1) 
+            } else if(event.code === 'ArrowRight') {
+              game.player.setDirection(1);
+            };
+            document.addEventListener('keydown', function(event){
+              if(event.code === 'Space'){
+                if(game.pauseGame === true){
+                  game.pauseGame = false;
+                } else if(game.pauseGame === false){
+                  game.pauseGame = true;
+                };
+              }; 
+            });
+          };
+        document.addEventListener('keydown', setHardDirection)
+        document.addEventListener('keydown', function(event){
+          if(event.code === 'KeyS'){
+            game.bulletStatus = true;
+            console.log(event)
+            console.log(game.bulletStatus);
+          };
+        });
+        document.addEventListener('keyup', function(event){
+          if(event.code === 'KeyS'){
+            game.bulletStatus = false;
+            console.log(event)
+            console.log(game.bulletStatus);
+          };
+        });
       };
-
-      document.addEventListener('keydown', setHardDirection)
-      document.addEventListener('keydown', function(event){
-        if(event.code === 'KeyS'){
-          game.bulletStatus = true;
-          console.log(event)
-          console.log(game.bulletStatus);
-        }
-      });
-      document.addEventListener('keyup', function(event){
-        if(event.code === 'KeyS'){
-          game.bulletStatus = false;
-          console.log(event)
-          console.log(game.bulletStatus);
-        };
-      })
-    };
-
   };
 
 // ------------------- GAME OVER SCREEN ----------------------------//
@@ -212,7 +206,7 @@ const main = () => {
     const scoreInGameOver = (event) => {
       let scoreTitle = document.querySelector('.score-title-gameover');
       scoreTitle.innerText = `Your score was ${event}`
-    }
+    };
 
     scoreInGameOver(GLOBALSCORE);
 
@@ -239,7 +233,7 @@ const main = () => {
     changeButton.addEventListener('click', buildSplashScreen);
 
 
-  // ----------------- HIGH SCORES ----------------------
+  // ----------------- HIGH SCORES IN GAME OVER ----------------------
     const buildHighScoresScreen = () =>{
       const highScoreScreen = buildDom(`
           <section class="high-score-screen">
@@ -260,57 +254,44 @@ const main = () => {
       goBackButton.addEventListener('click', buildGameOverScreen);
     };
 
-     
-
-     const localStorageScores = (event) => {
-        if(localStorage.getItem('Score') !== null){
-          let localScores = JSON.parse(localStorage.getItem('Score'));
-
-          localScores.push(event);
-
-          let sortArr = localScores.sort(function(a,b){return b - a;})
-            if(sortArr.length >= 5) {
-              const slicedArray = sortArr.slice(0, 5)
-              localStorage.setItem('Score', JSON.stringify(slicedArray));
-            } else {
-              localStorage.setItem('Score', JSON.stringify(sortArr));
-            } 
-        } 
-        else {
+  
+    const localStorageScores = (event) => {
+      if(localStorage.getItem('Score') !== null){
+        let localScores = JSON.parse(localStorage.getItem('Score'));
+        localScores.push(event);
+        let sortArr = localScores.sort(function(a,b){return b - a;})
+          if(sortArr.length >= 5) {
+            const slicedArray = sortArr.slice(0, 5)
+            localStorage.setItem('Score', JSON.stringify(slicedArray));
+          } else {
+            localStorage.setItem('Score', JSON.stringify(sortArr));
+          }; 
+        } else {
           const numberArray = [event]
           localStorage.setItem('Score', JSON.stringify(numberArray));
-        }
-     }
+        };
+      };
      
-     localStorageScores(GLOBALSCORE);
-
-     const highScoresButton = document.querySelector('.high-score-button');
-     highScoresButton.addEventListener('click', () => {
+     
+    const highScoresButton = document.querySelector('.high-score-button');
+    highScoresButton.addEventListener('click', () => {
       buildHighScoresScreen();
       fillHighScoreUl();
-     });
+    });
 
-     const fillHighScoreUl = () => {
-       let highScoreArr = JSON.parse(localStorage.getItem('Score'));
-       highScoreArr.forEach(val => {
-         let highScoreLi = document.createElement('li');
-         let highScoreUl = document.querySelector('.high-score-ul');
-         highScoreLi.innerText = `${val}`;
-         highScoreUl.appendChild(highScoreLi);
+    const fillHighScoreUl = () => {
+      let highScoreArr = JSON.parse(localStorage.getItem('Score'));
+      highScoreArr.forEach(val => {
+        let highScoreLi = document.createElement('li');
+        let highScoreUl = document.querySelector('.high-score-ul');
+        highScoreLi.innerText = `${val}`;
+        highScoreUl.appendChild(highScoreLi);
        });
+    };
 
-      }
-   
-
-
+    localStorageScores(GLOBALSCORE);
 
   };
-
-
-
-
-
-
 
 
 //// SPLASH SCREEN STARTS ////

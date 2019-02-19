@@ -27,35 +27,26 @@ class Game {
     const loop = ()=> {
 
       if(this.pauseGame === false){
-      if(Math.random() > 0.98) {
-        const x = Math.random() * this.canvas.width;
-        if((x > 15  && x < 130) || (x > 160 && x < 290) ) 
-        {this.cars.push(new Car(this.canvas, x))} 
-      };
-
-      if(GLOBALSTATE === 'hard' && this.score > 100 && this.bulletStatus === true) {
-        this.bullet = new Bullet(this.canvas, this.player.x)
-        this.bullets.push(this.bullet);
-      };
       
-      
-      this.actualizarScore();
-      this.scoreCount();
-      this.checkCollision();
-      this.updateCanvas();
-      this.clearCanvas();
-      this.drawCanvas();
-    };
+        this.createCars(this.state);
+        this.createBullets();
+        this.actualizarScore();
+        this.scoreCount();
+        this.checkCollision();
+        this.updateCanvas();
+        this.clearCanvas();
+        this.drawCanvas();
+      };
       
       if(!this.isGameOver)
       {window.requestAnimationFrame(loop);}
       
-  };
+    };
     window.requestAnimationFrame(loop);
   };
 
 
-
+  // -------------- STARTER METHODS ----------------------
 
   updateCanvas() {
     this.player.update();
@@ -75,6 +66,8 @@ class Game {
   clearCanvas() {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
   };
+
+  // ------------------ END GAME METHODS ---------------------
 
   checkCollision(){
     if (this.state === 'easy') {
@@ -107,6 +100,8 @@ class Game {
     this.onGameOver = callback;
   };
 
+  // --------------------- SCORE METHODS -------------------------
+
   changeScore(callback){
     this.actualizarScore = callback;
   };
@@ -126,6 +121,51 @@ class Game {
     }
     TOPSCORES.sort(function(a,b){return a - b;});
   };
+
+  // ----------------------- CREATE METHODS -----------------------
+
+  createBullets(){
+    if(GLOBALSTATE === 'hard' && this.score > 500 && this.bulletStatus === true) {
+      this.bullet = new Bullet(this.canvas, this.player.x)
+      this.bullets.push(this.bullet);
+    }
+  };
+
+  createCars(event){
+    if(event === 'hard'){
+      this.createCarsHard()
+    } else {
+      this.createCarsEasy()
+    }    
+  };
+
+  createCarsHard(){
+    if(this.score < 500) {
+      if(Math.random() > 0.97){
+        const x = Math.random() * this.canvas.width
+        if(x > 15 || x < 270){
+          this.cars.push(new Car(this.canvas, x))
+        }
+      }
+    } else if(this.score > 500) {
+        if(Math.random() > 0.96) {
+          const x = Math.random() * this.canvas.width
+           if(x > 15 || x < 270){
+           this.cars.push(new Car(this.canvas, x))
+          }
+        }
+      }
+  };
+
+  createCarsEasy(){
+    if(Math.random() > 0.98) {
+      const x = Math.random() * this.canvas.width;
+      if(x > 15  || x < 270) {
+        this.cars.push(new Car(this.canvas, x))
+      } 
+    }
+  };
+
 
 }
 
