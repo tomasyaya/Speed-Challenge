@@ -204,7 +204,7 @@ const main = () => {
         <button class="restart-button">Restart</button>
         <button class="change-difficulty-button">Change Difficulty</button>
         <h2 class='high-score'></h2>
-        <button class="high-score-button">Show High Score</button>
+        <button class="high-score-button">Check High Scores</button>
       </section>
     `);
     
@@ -246,9 +246,19 @@ const main = () => {
             <h1>High Scores</h1>  
             <ul class="high-score-ul">
             </ul>
+            <button class="go-start-screen">Start Screen</button>
+            <button class="go-back">Go Back</button>
           </section>
        `);
+
+      const goStartScreenButton = document.querySelector('.go-start-screen');
+      goStartScreenButton.addEventListener('click', buildSplashScreen);
+     
+      const goBackButton = document.querySelector('.go-back');
+      goBackButton.addEventListener('click', buildGameOverScreen);
     };
+
+     
 
      const localStorageScores = (event) => {
         if(localStorage.getItem('Score') !== null){

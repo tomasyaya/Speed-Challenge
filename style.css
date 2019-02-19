@@ -261,7 +261,7 @@ html {
   height: 600px;
   width: 70%;
   background: #484747;
-  border: 6px solid hsl(0, 100%, 50%);
+  border: 2px solid hsl(0, 100%, 50%);
   border-radius: 10px;
   -webkit-animation: rainbow 5s infinite alternate;
   
@@ -362,6 +362,16 @@ html {
   text-align: center;
   margin: 0 auto;
   padding-top: 5%;
+}
+
+.high-score-button {
+  border: 2px solid hsl(0, 100%, 50%);
+  border-radius: 10px;
+  -webkit-animation: rainbow 5s infinite alternate;
+  font-family: 'Open Sans Condensed', sans-serif;
+  color: #FAFAFA;
+  background: #484747;
+  font-size: 20px;
 }
 
 
