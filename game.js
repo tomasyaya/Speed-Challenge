@@ -6,9 +6,10 @@ class Game {
     this.context = this.canvas.getContext('2d');
     this.player;
     this.cars = [];
-    this.bullets = []
+    this.bullets = [];
     this.isGameOver = false;
     this.score = 0;
+    this.scores = [10];
     this.state = state;
     this.player = '';
     this.pauseGame = false;
@@ -20,8 +21,9 @@ class Game {
    startLoop(){
 
     this.player = new Player(this.canvas, this.player);
+    this.pushTopScore(GLOBALSCORE);
+
     
-    console.log(this.player)
     const loop = ()=> {
 
       if(this.pauseGame === false){
@@ -35,6 +37,7 @@ class Game {
         this.bullet = new Bullet(this.canvas, this.player.x)
         this.bullets.push(this.bullet);
       };
+      
       
       this.actualizarScore();
       this.scoreCount();
@@ -112,6 +115,16 @@ class Game {
   scoreCount(){
     this.score = this.score + 1;
     GLOBALSCORE = this.score;
+  };
+
+  pushTopScore(event){
+    if(event > TOPSCORES[0]){
+      TOPSCORES.push(event);
+    }
+    if(TOPSCORES.length > 5){
+      TOPSCORES.shift();
+    }
+    TOPSCORES.sort(function(a,b){return a - b;});
   };
 
 }

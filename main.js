@@ -7,6 +7,7 @@ var GLOBALSCORE = 0;
 var HIGHSCORE = 0;
 var GLOBALSTATE = '';
 var GLOBALPLAYER = 'player one';
+var TOPSCORES = [10];
 
 // ----------------------- MAIN FUNCTION ---------------------//
 
@@ -16,7 +17,7 @@ const main = () => {
     const main = document.querySelector('main');
     main.innerHTML = html;
     return main;
-  };
+  };  
 
   
 // ---------------------- SPLASH SCREEN --------------------------//
@@ -112,12 +113,15 @@ const main = () => {
     }
    
 
+    // --------------- STARTS THE GAME ------------------
 
     const game = new Game(canvasElement, state);
     game.gameOverCallback(buildGameOverScreen)
     game.changeScore(scoreSum)
     game.startLoop();
     game.player.playerSelect = GLOBALPLAYER;
+    
+    
     
     
     if(game.state === 'easy' || game.state === 'medium'){
