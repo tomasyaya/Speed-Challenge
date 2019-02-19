@@ -10,6 +10,7 @@ class Car {
     this.speed = 10;
     this.x = x;
     this.y = 0;
+    this.collision = false;
     this.policeCar = new Image();
     this.policeCar.src = 'Images/car4.png';
     this.taxiCar = new Image();
@@ -37,5 +38,24 @@ class Car {
   images(img){
     return img[Math.floor(Math.random()* (img.length - 1))]
   }
+
+  checkCollision(bullet){
+    const collideRight = this.x + this.size  > bullet.x;
+    const collideLeft = this.x  < bullet.x + bullet.size;
+    const collideTop = this.y  < bullet.y + bullet.size;
+    const collideBottom = this.y + this.size > bullet.y;
+
+    if(collideRight && collideLeft && collideBottom && collideTop) {
+      return true
+    }
+
+    return false;
+  };
   
+  removeHitCar(car){
+    if(this.collision === true){
+      
+    }
+  }
+
 }

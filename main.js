@@ -1,10 +1,14 @@
 'use strict'
 
+
+// --------------------- GLOBAL VARIABLES --------------------//
+
 var GLOBALSCORE = 0;
 var HIGHSCORE = 0;
 var GLOBALSTATE = '';
 var GLOBALPLAYER = 'player one';
 
+// ----------------------- MAIN FUNCTION ---------------------//
 
 const main = () => {
 
@@ -15,6 +19,7 @@ const main = () => {
   };
 
   
+// ---------------------- SPLASH SCREEN --------------------------//
 
   const buildSplashScreen = () => {
     const splashScreen = buildDom(`
@@ -50,6 +55,8 @@ const main = () => {
 
   };
 
+  // ----------------------- PLAYER SCREEN -------------------------//
+
   const buildSelecPlayerScreen = (event) => {
     const playerScreen = buildDom(`
       <section class="player-container">
@@ -78,6 +85,8 @@ const main = () => {
       buildSplashScreen();
     });
   }
+
+  // ------------------------ GAME SCREEN ------------------------------
 
   const buildGameScreen = (state) =>{
     const gameScreen = buildDom(`
@@ -109,8 +118,7 @@ const main = () => {
     game.changeScore(scoreSum)
     game.startLoop();
     game.player.playerSelect = GLOBALPLAYER;
-    // game.bestScores(GLOBALSCORE);
-    // console.log(GLOBALSCORE);
+    
     
     if(game.state === 'easy' || game.state === 'medium'){
     const setPlayerDirection = (event)=> {
@@ -159,6 +167,7 @@ const main = () => {
     
   };
 
+// ------------------- GAME OVER SCREEN ----------------------------//
 
   const buildGameOverScreen = (state) => {
     const gameOverScreen = buildDom(`

@@ -240,9 +240,7 @@ html {
 
 .game-over-screen {
   display: flex;
-  /* margin-left: 15%;
-  margin-top: 10%; */
-  margin: 0 auto;
+  margin: 10% auto;
   flex-direction: column;
   text-align: center;
   text-transform:  uppercase;

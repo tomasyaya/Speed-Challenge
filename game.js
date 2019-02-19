@@ -6,6 +6,7 @@ class Game {
     this.context = this.canvas.getContext('2d');
     this.player;
     this.cars = [];
+    this.bullets = []
     this.isGameOver = false;
     this.score = 0;
     this.state = state;
@@ -20,17 +21,18 @@ class Game {
 
     this.player = new Player(this.canvas, this.player);
     
-   
+    console.log(this.player)
     const loop = ()=> {
 
       if(this.pauseGame === false){
       if(Math.random() > 0.98) {
         const x = Math.random() * this.canvas.width;
         if((x > 15  && x < 130) || (x > 160 && x < 290) ) 
-        {this.cars.push(new Car(this.canvas, x))}
-        
+        {this.cars.push(new Car(this.canvas, x))} 
       };
-
+      
+      this.bullet = new Bullet(this.canvas, this.player.x)
+      this.bullets.push(this.bullet);
       
       this.actualizarScore();
       this.scoreCount();
@@ -52,11 +54,13 @@ class Game {
 
   updateCanvas() {
     this.player.update();
+    this.bullets.forEach(bullet => {bullet.update()});
     this.cars.forEach(car => {car.update()});
   };
 
   drawCanvas() {
     this.player.draw();
+    this.bullets.forEach(bullet => {bullet.draw()});
     this.cars.forEach(car => {car.draw()});
   };
 
