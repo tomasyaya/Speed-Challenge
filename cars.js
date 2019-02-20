@@ -23,6 +23,8 @@ class Car {
     this.whiteCar.src = 'Images/car6.png'
     this.cars = [this.policeCar, this.taxiCar, this.blueCar, this.grayCar, this.whiteCar];
     this.img = this.images(this.cars)
+    this.explosion = new Image();
+    this.explosion.src = 'Images/explotion.png';
   }
 
   update(){
@@ -33,6 +35,8 @@ class Car {
     this.context.fillStyle = "black";
     this.context.drawImage(this.img, this.x, this.y, this.size, this.size + this.sizeY);
   };
+
+  
 
   images(img){
     return img[Math.floor(Math.random()* (img.length - 1))]
@@ -56,4 +60,5 @@ class Car {
       this.context.clearRect(car.x, car.y, car.size, car.sizeY)
     }
   }
+  
 }

@@ -10,7 +10,6 @@ html {
 body {
   margin: 0;
   padding: 0;
-  
 }
 
 
@@ -19,7 +18,6 @@ body {
 
 html {
   background: #FAFAFA;
-  
 }
 
 .container {
@@ -27,7 +25,6 @@ html {
   width: 100%;
   margin: 0;
   padding: 0;
-  
 }
 
 @keyframes Gradient {
@@ -198,7 +195,7 @@ html {
 .game-container {
   display: flex;
   width: 80%;
-  height: 800px;
+  height: 70%;
   margin-left: 10%;
   margin-top: 5%;
   margin-bottom: 5%;
@@ -217,9 +214,7 @@ html {
 }
 
 .main-canvas {
-  
   background-image: url('Images/carretera.jpg');
-  
 }
 
 .game-container h2 {

@@ -142,27 +142,21 @@ class Game {
   createCarsHard(){
     if(this.score < 500) {
       if(Math.random() > 0.97){
-        const x = Math.random() * this.canvas.width
-        if(x > 15 || x < 270){
+        const x = 30 +(Math.random() * this.canvas.width - 80);
           this.cars.push(new Car(this.canvas, x))
-        }
       }
     } else if(this.score > 500) {
         if(Math.random() > 0.96) {
-          const x = Math.random() * this.canvas.width
-           if(x > 15 || x < 270){
+          const x = 30 + (Math.random() * this.canvas.width - 80);
            this.cars.push(new Car(this.canvas, x))
-          }
         }
       }
   };
 
   createCarsEasy(){
     if(Math.random() > 0.98) {
-      const x = Math.random() * this.canvas.width;
-      if(x > 15  || x < 270) {
-        this.cars.push(new Car(this.canvas, x))
-      } 
+      const x = 30 + (Math.random() * this.canvas.width -30);
+      this.cars.push(new Car(this.canvas, x))
     }
   };
 

@@ -11,17 +11,14 @@ class Bullet {
     this.speed = 5;
     this.blast = new Image();
     this.blast.src = 'Images/blast.png';
-  }
+  };
 
   update(){
     this.y = this.y + this.direction * this.speed;
-  }
+  };
 
   draw() {
-    
-    this.context.drawImage(this.blast,this.x, this.y, this.size, this.size);
-    
-  }
-
+    this.context.drawImage(this.blast,this.x, this.y, this.size, this.size); 
+  };
   
-}
+};

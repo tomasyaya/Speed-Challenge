@@ -109,7 +109,6 @@ const main = () => {
     canvasElement.setAttribute('width', width);
     canvasElement.setAttribute('height', height);
 
-
     const scoreSum = () => {
       let scoreTitle = document.querySelector('.score-title');
       scoreTitle.innerText = `Your score is ${game.score}`
@@ -212,7 +211,7 @@ const main = () => {
 
     const highScore = (event) => {
       let highScore = document.querySelector('.high-score');
-      highScore.innerText = `High Score ${event}`;
+      highScore.innerText = `Your High Score ${event}`;
     }
 
     const checkHighScore = (event) => {
